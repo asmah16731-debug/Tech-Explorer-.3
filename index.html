@@ -1,0 +1,4333 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tech Explorer</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>
+
+    <div class="header-layout">
+
+        <!-- =========================
+             ฝั่งซ้าย
+             ========================= -->
+
+        <div class="header-left">
+
+            <div class="site-title">
+
+                <div class="site-title-main">
+                    🌏 Tech Explorer
+                </div>
+
+                <div class="site-title-sub">
+                    นักสำรวจโลกเทคโนโลยี ป.3
+                </div>
+
+            </div>
+
+
+            <button
+                class="menu-toggle"
+                type="button"
+                onclick="toggleSidebar()">
+
+                ☰
+
+            </button>
+
+        </div>
+
+
+        <!-- =========================
+             เมนูตรงกลาง
+             ========================= -->
+
+        <nav class="header-nav" id="nav">
+
+            <button
+                data-page="home"
+                class="active">
+
+                🏠 หน้าหลัก
+
+            </button>
+
+            <button data-page="guide">
+
+                📘 คู่มือ
+
+            </button>
+
+            <button data-page="objectives">
+
+                🎯 วัตถุประสงค์
+
+            </button>
+
+            <button data-page="pretest">
+
+                📝 แบบทดสอบก่อนเรียน
+
+            </button>
+
+           <button data-page="lessons">
+    📚 บทเรียน
+</button>
+
+<button data-page="activities">
+    🎮 กิจกรรม
+</button>
+
+
+            <button data-page="posttest">
+
+                🏆 แบบทดสอบหลังเรียน
+
+            </button>
+<button data-page="results">
+    📊 ผลการเรียน
+</button>
+ </button>
+
+<button data-page="creator">
+    👤 ผู้จัดทำ
+</button>
+            <button data-page="teacher">
+
+                👩‍🏫  ผลแสดงคะแนนสำหรับครู
+
+            
+        </nav>
+
+
+        <!-- =========================
+             ฝั่งขวา
+             ========================= -->
+
+        <div class="header-right">
+
+            <div
+                class="student-info"
+                id="userPill">
+
+                ยังไม่ได้เข้าสู่ระบบ
+
+            </div>
+
+
+            <button class="logout-btn" type="button" onclick="logout()">
+    ออก
+</button>
+
+        </div>
+
+    </div>
+
+</header>
+<main>
+<section id="login" class="page active">
+ <div class="login-wrap">
+  <div class="card">
+   <div class="icon">👨🏻‍💻🦾💡</div><h1>Tech Explorer ป.3 </h1>
+   <p>เรื่อง อินเทอร์เน็ตและเทคโนโลยีสารสนเทศ</p>
+   <div class="role-switch">
+    <button class="btn primary" id="studentRole">👨‍🎓 นักเรียน</button>
+    <button class="btn gray" id="teacherRole">👩‍🏫 ครูผู้สอน</button>
+   </div>
+   <div id="studentForm">
+    <div class="form-row">
+     <div><label>ชื่อ - นามสกุล</label><input id="studentName" placeholder="เช่น เด็กชายสมชาย ใจดี"></div>
+     <div><label>ชั้น</label><input id="studentClass" placeholder="เช่น ป.3/1"></div>
+     <div><label>เลขที่</label><input id="studentNo" type="number" min="1" placeholder="1"></div>
+    </div>
+    <button class="btn green" style="width:100%;margin-top:16px" onclick="studentLogin()"> เข้าเรียน → </button>
+   </div>
+   <div id="teacherForm" class="hidden">
+    <label>รหัสผ่านครูผู้สอน</label><input id="teacherPass" type="password" placeholder="กรอกรหัสผ่าน">
+    <button class="btn primary" style="width:100%;margin-top:16px" onclick="teacherLogin()">🔐 เข้าสู่ระบบครู</button>
+    <p style="font-size:.85rem;color:#777">รหัสเริ่มต้น: <b>1234</b> (แก้ไขได้ในโค้ด HTML)</p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section id="home" class="page">
+ <div class="hero">
+  <span class="badge">📖 หน่วยการเรียนรู้ 3 ⊹ ࣪ ˖</span>
+  <h1>อินเทอร์เน็ตและ</h1>
+<h1>เทคโนโลยีสารสนเทศ</h1>
+  <p>เรียนรู้การสืบค้นข้อมูล การใช้อินเทอร์เน็ตอย่างเหมาะสม การใช้เทคโนโลยีสารสนเทศอย่างปลอดภัย<p> 
+และข้อดี–ข้อเสียของการใช้เทคโนโลยีสารสนเทศและการสื่อสาร</p>
+  <button class="btn primary" onclick="go('pretest')">📝 เริ่มแบบทดสอบก่อนเรียน →</button></div>
+<div class="grid">
+
+    <!-- คู่มือการใช้งาน -->
+    <div class="card" onclick="go('guide')">
+        <div class="card-icon">📘</div>
+        <h3>คู่มือการใช้งาน</h3>
+        <p>แนะนำวิธีใช้งานเว็บไซต์และการเรียนรู้</p>
+        <button type="button" class="card-btn">เปิดดู →</button>
+    </div>
+
+    <!-- วัตถุประสงค์ -->
+    <div class="card" onclick="go('objectives')">
+        <div class="card-icon">🎯</div>
+        <h3>วัตถุประสงค์</h3>
+        <p>เรียนรู้เป้าหมายและสิ่งที่ผู้เรียนจะได้รับ</p>
+        <button type="button" class="card-btn">เปิดดู →</button>
+    </div>
+
+    <!-- บทเรียน -->
+    <div class="card" onclick="go('lessons')">
+        <div class="card-icon">📖</div>
+        <h3>บทเรียน</h3>
+        <p>เรียนรู้เนื้อหาอินเทอร์เน็ตและเทคโนโลยีสารสนเทศ</p>
+        <button type="button" class="card-btn">เปิดดู →</button>
+    </div>
+
+    <!-- ก่อนเรียน -->
+    <div class="card" onclick="go('pretest')">
+        <div class="card-icon">📝</div>
+        <h3>ก่อนเรียน</h3>
+        <p>สำรวจความรู้เดิมก่อนเริ่มบทเรียน</p>
+        <button type="button" class="card-btn">เปิดดู →</button>
+    </div>
+
+    <!-- หลังเรียน -->
+    <div class="card" onclick="go('posttest')">
+        <div class="card-icon">🏆</div>
+        <h3>หลังเรียน</h3>
+        <p>ตรวจสอบความเข้าใจหลังจากเรียนจบ</p>
+        <button type="button" class="card-btn">เปิดดู →</button>
+    </div>
+
+</div>
+ <div class="card" style="margin-top:22px"><h3>📊 ความก้าวหน้าของคุณ</h3><div class="progress"><span id="progressBar" style="width:0%"></span></div><p id="progressText">เริ่มต้นการเรียนรู้ของคุณ</p></div>
+</section>
+
+<section id="guide" class="page content">
+
+    <!-- ส่วนหัว -->
+    <div class="guide-header">
+
+        <div class="guide-label">
+            ⚙️ LEARNING GUIDE
+        </div>
+
+        <h2>คู่มือการใช้งานเว็บไซต์</h2>
+
+        <p>
+            ทำตามขั้นตอนทีละข้อ เพื่อเรียนรู้เรื่องอินเทอร์เน็ตและเทคโนโลยีสารสนเทศอย่างเป็นลำดับ
+        </p>
+
+    </div>
+
+
+    <!-- ขั้นตอนที่ 01 -->
+    <div class="guide-step">
+
+        <div class="guide-number">01</div>
+
+        <div class="guide-icon icon-pink">👋</div>
+
+        <div class="guide-text">
+            <h3>เข้าสู่เว็บไซต์</h3>
+            <p>
+                กรอกชื่อ–นามสกุล ชั้น และเลขที่ เพื่อเข้าสู่ระบบนักเรียน
+            </p>
+        </div>
+
+    </div>
+
+
+    <!-- ขั้นตอนที่ 02 -->
+    <div class="guide-step">
+
+        <div class="guide-number">02</div>
+
+        <div class="guide-icon icon-blue">🎯</div>
+
+        <div class="guide-text">
+            <h3>อ่านวัตถุประสงค์</h3>
+            <p>
+                ดูเป้าหมายการเรียนรู้และสิ่งที่ผู้เรียนจะได้รับจากบทเรียน
+            </p>
+        </div>
+
+    </div>
+
+
+    <!-- ขั้นตอนที่ 03 -->
+    <div class="guide-step">
+
+        <div class="guide-number">03</div>
+
+        <div class="guide-icon icon-green">📝</div>
+
+        <div class="guide-text">
+            <h3>ทำแบบทดสอบก่อนเรียน</h3>
+            <p>
+                ตอบคำถาม 10 ข้อ เพื่อสำรวจความรู้เดิมของตนเอง
+            </p>
+        </div>
+
+    </div>
+
+
+    <!-- ขั้นตอนที่ 04 -->
+    <div class="guide-step">
+
+        <div class="guide-number">04</div>
+
+        <div class="guide-icon icon-pink">📖</div>
+
+        <div class="guide-text">
+            <h3>เรียนรู้บทเรียนทั้ง 4 บท</h3>
+            <p>
+                เรียนรู้การสืบค้นข้อมูล ข้อตกลงในการใช้อินเทอร์เน็ต การใช้เทคโนโลยีอย่างปลอดภัย และข้อดี–ข้อเสียของเทคโนโลยี
+            </p>
+        </div>
+
+    </div>
+
+
+    <!-- ขั้นตอนที่ 05 -->
+    <div class="guide-step">
+
+        <div class="guide-number">05</div>
+
+        <div class="guide-icon icon-blue">🎮</div>
+
+        <div class="guide-text">
+            <h3>ทำกิจกรรมระหว่างเรียน</h3>
+            <p>
+                ทำกิจกรรมเพื่อฝึกทักษะและทบทวนความรู้จากแต่ละบทเรียน
+            </p>
+        </div>
+
+    </div>
+
+
+    <!-- ขั้นตอนที่ 06 -->
+    <div class="guide-step">
+
+        <div class="guide-number">06</div>
+
+        <div class="guide-icon icon-green">🏆</div>
+
+        <div class="guide-text">
+            <h3>ทำแบบทดสอบหลังเรียน</h3>
+            <p>
+                ตอบคำถาม 10 ข้อ เพื่อตรวจสอบความเข้าใจหลังจากเรียนจบ
+            </p>
+        </div>
+
+</div> <!-- ⭐ เพิ่มบรรทัดนี้ -->
+<!-- ปุ่มด้านล่าง -->
+<div class="guide-buttons">
+
+    <button class="guide-btn pretest-btn" onclick="go('pretest')">
+         แบบทดสอบก่อนเรียน📝⌯⌲
+    </button>
+
+  
+
+</div>
+
+</div>
+</section>
+
+<section id="objectives" class="page content">
+
+    <!-- ส่วนหัว -->
+    <div class="guide-header objective-header">
+
+        <div class="guide-label">
+            🎯 LEARNING OBJECTIVES
+        </div>
+
+        <h2>วัตถุประสงค์การเรียนรู้</h2>
+
+        <p>
+            เป้าหมายการเรียนรู้ที่นักเรียนจะได้รับจากหน่วยอินเทอร์เน็ตและเทคโนโลยีสารสนเทศ
+        </p>
+
+    </div>
+
+
+
+    <!-- กล่อง K P A -->
+    <div class="objectives-grid">
+
+        <!--  K ความรู้ -->
+        <div class="objective-card knowledge">
+
+            <span class="objective-tag">
+               💡 K • ความรู้
+            </span>
+
+            <h3>
+                เข้าใจอินเทอร์เน็ตและเทคโนโลยีสารสนเทศ
+            </h3>
+
+            <p>
+                เพื่อให้นักเรียนสามารถอธิบายความหมายและประโยชน์
+                ของอินเทอร์เน็ตและเทคโนโลยีสารสนเทศได้
+            </p>
+
+        </div>
+
+
+        <!-- P ทักษะ -->
+        <div class="objective-card skill">
+
+            <span class="objective-tag">
+                🔎 P • ทักษะ
+            </span>
+
+            <h3>
+                สืบค้นและเลือกข้อมูลอย่างเหมาะสม
+            </h3>
+
+            <p>
+                เพื่อให้นักเรียนสามารถสืบค้นและเลือกข้อมูล
+                จากอินเทอร์เน็ตได้อย่างเหมาะสม
+            </p>
+
+        </div>
+
+
+        <!-- A เจตคติ -->
+        <div class="objective-card attitude">
+
+            <span class="objective-tag">
+               🛡️ A • เจตคติ
+            </span>
+
+            <h3>
+                ใช้เทคโนโลยีอย่างปลอดภัย
+            </h3>
+
+            <p>
+                เพื่อให้นักเรียนสามารถใช้เทคโนโลยีสารสนเทศ
+                และอินเทอร์เน็ตได้อย่างปลอดภัย
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+<section id="pretest" class="page">
+
+    <!-- =========================
+         หัวข้อแบบทดสอบ
+    ========================== -->
+    <div class="card">
+        <h2>📝 แบบทดสอบก่อนเรียน 10 ข้อ</h2>
+        <p>เลือกคำตอบที่ถูกต้องที่สุด ข้อละ 1 คะแนน</p>
+    </div>
+
+
+    <!-- =========================
+         แบบทดสอบ 10 ข้อ
+         แต่ละข้อจะแยกเป็น 1 กล่อง
+    ========================== -->
+    <div id="preQuiz"></div>
+
+
+    <!-- =========================
+         ปุ่มส่งแบบทดสอบ
+    ========================== -->
+    <div style="text-align:center; margin-top:25px;">
+
+        <button
+            class="btn primary"
+            onclick="submitQuiz('pre')">
+            ส่งแบบทดสอบก่อนเรียน
+        </button>
+
+    </div>
+
+
+    <!-- ผลคะแนน -->
+    <div id="preResult"></div>
+
+
+    <!-- =========================
+         ปุ่มเริ่มเรียน
+    ========================== -->
+    <div style="text-align:center; margin-top:25px;">
+
+       <button
+    class="btn green"
+    onclick="go('lessons')">
+    🚀 เริ่มเรียน →
+</button>
+
+    </div>
+
+</section>
+
+</section>
+<!-- =========================================
+     หน้าแผนที่บทเรียน
+========================================= -->
+
+<section id="lessons" class="page">
+
+    <div class="lesson-map-page">
+
+        <!-- ส่วนหัว -->
+        <div class="lesson-map-header">
+
+            <div class="lesson-map-badge">
+                📚 LEARNING ADVENTURE
+            </div>
+
+            <h1>แผนที่บทเรียนแห่งโลกเทคโนโลยี</h1>
+
+            <p>
+                เริ่มจากจุดเริ่มต้น แล้วเดินทางไปทีละด่าน
+                เมื่อเรียนจบแต่ละบทแล้วจึงไปต่อในบทถัดไป
+            </p>
+
+        </div>
+
+
+        <!-- แผนที่ 4 บท -->
+        <div class="lesson-map">
+
+
+            <!-- =========================
+                 บทที่ 1
+            ========================== -->
+            <div class="lesson-item left">
+
+                <div class="lesson-number">
+                    01
+                </div>
+
+                <div class="lesson-card">
+
+                    <div class="lesson-top">
+
+                        <div class="lesson-icon">
+                            🔎
+                        </div>
+
+                        <span class="lesson-status">
+                            📖 บทที่ 1 / 4
+                        </span>
+
+                    </div>
+
+                    <h2>
+                        การสืบค้นข้อมูลโดยใช้อินเทอร์เน็ต
+                    </h2>
+
+                    <p>
+                        เรียนรู้การสืบค้นข้อมูล การใช้คำค้น
+                        การเลือกข้อมูล และการตรวจสอบความน่าเชื่อถือ
+                        ของข้อมูลจากอินเทอร์เน็ต
+                    </p>
+
+                    <button
+                        class="lesson-start"
+                        onclick="go('ch1')">
+                        เริ่มเรียนบทที่ 1 →
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 บทที่ 2
+            ========================== -->
+            <div class="lesson-item right">
+
+                <div class="lesson-number">
+                    02
+                </div>
+
+                <div class="lesson-card">
+
+                    <div class="lesson-top">
+
+                        <div class="lesson-icon">
+                            🤝
+                        </div>
+
+                        <span class="lesson-status">
+                            📖 บทที่ 2 / 4
+                        </span>
+
+                    </div>
+
+                    <h2>
+                        ข้อตกลงในการใช้อินเทอร์เน็ต
+                    </h2>
+
+                    <p>
+                        เรียนรู้ข้อตกลง มารยาท และความรับผิดชอบ
+                        ในการใช้อินเทอร์เน็ต รวมถึงการเคารพสิทธิ
+                        ของผู้อื่น
+                    </p>
+
+                    <button
+                        class="lesson-start"
+                        onclick="go('ch2')">
+                        เริ่มเรียนบทที่ 2 →
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 บทที่ 3
+            ========================== -->
+            <div class="lesson-item left">
+
+                <div class="lesson-number">
+                    03
+                </div>
+
+                <div class="lesson-card">
+
+                    <div class="lesson-top">
+
+                        <div class="lesson-icon">
+                            🛡️
+                        </div>
+
+                        <span class="lesson-status">
+                            📖 บทที่ 3 / 4
+                        </span>
+
+                    </div>
+
+                    <h2>
+                        การใช้เทคโนโลยีสารสนเทศอย่างปลอดภัย
+                    </h2>
+
+                    <p>
+                        เรียนรู้วิธีปกป้องข้อมูลส่วนตัว
+                        รหัสผ่าน บัญชีผู้ใช้ และรู้จักรับมือ
+                        กับความเสี่ยงจากการใช้งานออนไลน์
+                    </p>
+
+                    <button
+                        class="lesson-start"
+                        onclick="go('ch3')">
+                        เริ่มเรียนบทที่ 3 →
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 บทที่ 4
+            ========================== -->
+            <div class="lesson-item right">
+
+                <div class="lesson-number">
+                    04
+                </div>
+
+                <div class="lesson-card">
+
+                    <div class="lesson-top">
+
+                        <div class="lesson-icon">
+                            ⚖️
+                        </div>
+
+                        <span class="lesson-status">
+                            📖 บทที่ 4 / 4
+                        </span>
+
+                    </div>
+
+                    <h2>
+                        ข้อดีและข้อเสียจากการใช้เทคโนโลยีสารสนเทศและการสื่อสาร
+                    </h2>
+
+                    <p>
+                        เรียนรู้ประโยชน์ ข้อจำกัด และผลกระทบ
+                        จากการใช้เทคโนโลยีสารสนเทศและการสื่อสาร
+                        พร้อมเรียนรู้การใช้งานอย่างเหมาะสม
+                    </p>
+
+                    <button
+                        class="lesson-start"
+                        onclick="go('ch4')">
+                        เริ่มเรียนบทที่ 4 →
+                    </button>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+<!-- =====================================================
+     หน้ารวมกิจกรรม
+====================================================== -->
+
+<section id="activities" class="page content">
+
+    <div class="lesson-header-box">
+
+        <div class="lesson-label">
+            🎮 ACTIVITIES
+        </div>
+
+        <h2>
+            🎮 กิจกรรมการเรียนรู้
+        </h2>
+
+        <p>
+            เลือกกิจกรรมจากแต่ละบท
+            แล้วทำภารกิจให้สำเร็จ
+        </p>
+
+    </div>
+
+
+    <!-- =========================
+         กิจกรรมบทที่ 1
+    ========================== -->
+
+    <div class="activity-menu-card">
+
+        <div class="activity-menu-icon">
+            🔎
+        </div>
+
+        <div class="activity-menu-content">
+
+            <span class="activity-chapter">
+                บทที่ 1
+            </span>
+
+            <h3>
+                🕵️ ภารกิจนักสืบจิ๋ว
+            </h3>
+
+            <p>
+                เรียงขั้นตอนการสืบค้นข้อมูล
+                ให้ถูกต้องตามลำดับ
+            </p>
+
+           <button
+    class="activity-menu-btn"
+    onclick="openActivity('ch1','activity1')">
+
+    🚀 เริ่มกิจกรรมบทที่ 1
+
+</button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         กิจกรรมบทที่ 2
+    ========================== -->
+
+    <div class="activity-menu-card">
+
+        <div class="activity-menu-icon">
+            🤝
+        </div>
+
+        <div class="activity-menu-content">
+
+            <span class="activity-chapter">
+                บทที่ 2
+            </span>
+
+            <h3>
+                🕵️ ภารกิจนักสืบอินเทอร์เน็ตที่ดี
+            </h3>
+
+            <p>
+                ลากการ์ดสถานการณ์
+                ไปยังหมวดหมู่ของข้อตกลงในการใช้อินเทอร์เน็ต
+                ให้ถูกต้อง
+            </p>
+
+            <button
+    class="activity-menu-btn"
+    onclick="openActivity('ch2','activity2')">
+
+    🚀 เริ่มกิจกรรมบทที่ 2
+
+</button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         กิจกรรมบทที่ 3
+    ========================== -->
+
+    <div class="activity-menu-card">
+
+        <div class="activity-menu-icon">
+            🛡️
+        </div>
+
+        <div class="activity-menu-content">
+
+            <span class="activity-chapter">
+                บทที่ 3
+            </span>
+
+            <h3>
+                🛡️ ภารกิจผู้พิทักษ์เทคโนโลยี
+            </h3>
+
+            <p>
+                ลากสถานการณ์ไปจับคู่กับ
+                วิธีใช้เทคโนโลยีสารสนเทศอย่างปลอดภัย
+            </p>
+
+          <button
+    class="activity-menu-btn"
+    onclick="openActivity('ch3','activity3')">
+
+    🚀 เริ่มกิจกรรมบทที่ 3
+
+</button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         กิจกรรมบทที่ 4
+    ========================== -->
+
+    <div class="activity-menu-card">
+
+        <div class="activity-menu-icon">
+            💻
+        </div>
+
+        <div class="activity-menu-content">
+
+            <span class="activity-chapter">
+                บทที่ 4
+            </span>
+
+            <h3>
+                🕵️ ภารกิจนักสำรวจเทคโนโลยี
+            </h3>
+
+            <p>
+                ลากสถานการณ์ไปไว้ในช่อง
+                ข้อดี หรือ ข้อเสีย ให้ถูกต้อง
+            </p>
+
+           <button
+    class="activity-menu-btn"
+    onclick="openActivity('ch4','activity4')">
+
+    🚀 เริ่มกิจกรรมบทที่ 4
+
+</button>
+
+        </div>
+
+    </div>
+
+
+</section>
+<!-- =====================================================
+     บทที่ 1 : การสืบค้นข้อมูลโดยใช้อินเทอร์เน็ต
+====================================================== -->
+
+<section id="ch1" class="page content">
+
+    <!-- =================================================
+         หัวข้อบทเรียน
+    ================================================== -->
+
+    <div class="lesson-header-box">
+
+        <div class="lesson-label">
+            🔎 LESSON 01
+        </div>
+
+        <h2>
+            บทที่ 1 การสืบค้นข้อมูลโดยใช้อินเทอร์เน็ต
+        </h2>
+
+        <p>
+            เรียนรู้ความหมายของการสืบค้นข้อมูล
+            เว็บไซต์ เว็บเบราว์เซอร์ รูปแบบการสืบค้น
+            และขั้นตอนการค้นหาข้อมูลด้วย Search Engine
+        </p>
+
+    </div>
+
+
+    <!-- =================================================
+         1. ความหมาย
+    ================================================== -->
+
+    <div class="lesson-topic-box">
+
+        <div class="topic-title">
+            <span class="topic-icon">📚</span>
+
+            <div>
+                <span class="topic-number"></span>
+                <h3>
+                    ความหมายของการสืบค้นข้อมูลโดยใช้อินเทอร์เน็ต
+                </h3>
+            </div>
+        </div>
+
+        <div class="topic-content">
+
+            <p>
+                การสืบค้นข้อมูลโดยใช้อินเทอร์เน็ต คือ
+                การค้นหาข้อมูลจากเว็บไซต์ต่าง ๆ
+                ที่ให้บริการข้อมูลบนอินเทอร์เน็ต
+                โดยข้อมูลที่ค้นหาอาจอยู่ในรูปแบบ
+                <b>ข้อความ รูปภาพ เสียง หรือวิดีโอ</b>
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         2. เว็บไซต์และเว็บเบราว์เซอร์
+    ================================================== -->
+
+    <div class="lesson-topic-box">
+
+        <div class="topic-title">
+
+            <span class="topic-icon">🌐</span>
+
+            <div>
+                <span class="topic-number"></span>
+
+                <h3>
+                    เว็บไซต์และเว็บเบราว์เซอร์
+                </h3>
+            </div>
+
+        </div>
+
+
+        <!-- Website / Browser -->
+
+        <div class="info-grid">
+
+            <!-- Website -->
+
+            <div class="info-box website-box">
+
+                <div class="info-icon">
+                    🌐
+                </div>
+
+                <h4>
+                    เว็บไซต์ (Website)
+                </h4>
+
+                <p>
+                    เว็บไซต์เป็นแหล่งให้บริการข้อมูล
+                    บนอินเทอร์เน็ต ผู้ใช้สามารถเข้าไป
+                    ค้นหาข้อมูลที่ต้องการได้
+                </p>
+
+            </div>
+
+
+            <!-- Web Browser -->
+
+            <div class="info-box browser-box">
+
+                <div class="info-icon">
+                    💻
+                </div>
+
+                <h4>
+                    เว็บเบราว์เซอร์ (Web Browser)
+                </h4>
+
+                <p>
+                    เป็นโปรแกรมที่ใช้สำหรับเข้าถึงเว็บไซต์
+                    เช่น
+                </p>
+
+                <div class="browser-list">
+
+                    <span>🌐 Google Chrome</span>
+
+                    <span>🔵 Microsoft Edge</span>
+
+                    <span>🦊 Firefox</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- URL -->
+
+        <div class="highlight-box">
+
+            <div class="highlight-icon">
+                🔗
+            </div>
+
+            <div>
+
+                <h4>
+                    URL (URL Address)
+                </h4>
+
+                <p>
+                    เมื่อเปิดเว็บเบราว์เซอร์
+                    ผู้ใช้สามารถพิมพ์ที่อยู่ของเว็บไซต์
+                    หรือ URL (URL Address)
+                    เพื่อเข้าสู่เว็บไซต์ที่ต้องการได้
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         3. รูปแบบการสืบค้นข้อมูล
+    ================================================== -->
+
+    <div class="lesson-topic-box">
+
+        <div class="topic-title">
+
+            <span class="topic-icon">🔍</span>
+
+            <div>
+
+                <span class="topic-number"></span>
+
+                <h3>
+                    รูปแบบการสืบค้นข้อมูล
+                </h3>
+
+            </div>
+
+        </div>
+
+
+        <div class="topic-intro">
+
+            <p>
+                การสืบค้นข้อมูลโดยใช้อินเทอร์เน็ตแบ่งออกเป็น
+                <b>2 แบบ</b>
+            </p>
+
+        </div>
+
+
+        <!-- รูปแบบ 2 แบบ -->
+
+        <div class="search-type-grid">
+
+
+            <!-- Index Directory -->
+
+            <div class="search-type index-type">
+
+                <div class="search-type-icon">
+                    🔎
+                </div>
+
+                <span class="type-number">
+                    
+                </span>
+
+                <h4>
+                    การสืบค้นแบบ Index Directory
+                </h4>
+
+                <p>
+                    เป็นการสืบค้นข้อมูลจากหัวข้อต่าง ๆ
+                    ที่มีการจัดเป็นหมวดหมู่ไว้แล้ว
+                    ผู้ใช้เลือกหัวข้อที่ต้องการ
+                    เพื่อค้นหาข้อมูล
+                </p>
+
+            </div>
+
+
+            <!-- Search Engine -->
+
+            <div class="search-type engine-type">
+
+                <div class="search-type-icon">
+                    🔍
+                </div>
+
+                <span class="type-number">
+                   
+                </span>
+
+                <h4>
+                    การสืบค้นแบบ Search Engine
+                </h4>
+
+                <p>
+                    เป็นการสืบค้นข้อมูลโดยใช้บริการ
+                    ทางอินเทอร์เน็ต หรือที่เรียกว่า
+                    <b>Search Engine</b>
+                    โดยใช้ <b>คำค้น (Keyword)</b>
+                    เพื่อค้นหาข้อมูลที่ต้องการ
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         4. ขั้นตอนการสืบค้นข้อมูล
+    ================================================== -->
+
+    <div class="lesson-topic-box">
+
+        <div class="topic-title">
+
+            <span class="topic-icon">💡</span>
+
+            <div>
+
+                <span class="topic-number"></span>
+
+                <h3>
+                    ขั้นตอนการสืบค้นข้อมูลแบบ Search Engine
+                </h3>
+
+            </div>
+
+        </div>
+
+
+        <div class="topic-intro">
+
+            <p>
+                การค้นหาข้อมูลสามารถทำตามขั้นตอนง่าย ๆ ดังนี้
+            </p>
+
+        </div>
+
+
+        <!-- =============================================
+             ขั้นที่ 1
+        ============================================== -->
+
+        <div class="step-box">
+
+            <div class="step-number">
+                01
+            </div>
+
+            <div class="step-content">
+
+                <h4>
+                    ขั้นที่ 1 เปิดเว็บเบราว์เซอร์
+                </h4>
+
+                <p>
+                    เปิดโปรแกรมสำหรับเข้าถึงเว็บไซต์ เช่น
+                    <b>Google Chrome, Microsoft Edge หรือ Firefox</b>
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- =============================================
+             ขั้นที่ 2
+        ============================================== -->
+
+        <div class="step-box">
+
+            <div class="step-number">
+                02
+            </div>
+
+            <div class="step-content">
+
+                <h4>
+                    ขั้นที่ 2 เข้าเว็บไซต์ Search Engine
+                </h4>
+
+                <p>
+                    เข้าเว็บไซต์ที่ให้บริการค้นหาข้อมูล เช่น
+                </p>
+
+                <div class="website-list">
+
+                    <span>🌐 www.google.com</span>
+
+                    <span>🔎 www.bing.com</span>
+
+                    <span>🌐 www.yahoo.com</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =============================================
+             ขั้นที่ 3
+        ============================================== -->
+
+        <div class="step-box">
+
+            <div class="step-number">
+                03
+            </div>
+
+            <div class="step-content">
+
+                <h4>
+                    ขั้นที่ 3 ระบุคำค้น
+                </h4>
+
+                <p>
+                    พิมพ์ <b>คำค้น (Keyword)</b>
+                    ที่เกี่ยวข้องกับข้อมูลที่ต้องการ
+                    ลงในช่องค้นหา
+                </p>
+
+
+                <!-- กล่องตัวอย่าง -->
+
+                <div class="example-box">
+
+                    <div class="example-title">
+                        🔎 ตัวอย่างการใช้คำค้น
+                    </div>
+
+                    <p>
+                        หากต้องการค้นหาข้อมูลเกี่ยวกับอาหารไทย
+                        อาจใช้คำค้นว่า
+                    </p>
+
+                    <div class="keyword-box">
+                        “อาหารไทย”
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =============================================
+             ขั้นที่ 4
+        ============================================== -->
+
+        <div class="step-box">
+
+            <div class="step-number">
+                04
+            </div>
+
+            <div class="step-content">
+
+                <h4>
+                    ขั้นที่ 4 เลือกข้อมูลที่ต้องการ
+                </h4>
+
+                <p>
+                    ตรวจสอบผลการค้นหาที่ปรากฏ
+                    แล้วเลือกข้อมูลหรือเว็บไซต์
+                    ที่ตรงกับสิ่งที่ต้องการ
+                </p>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- =================================================
+         สรุปบทเรียน
+    ================================================== -->
+
+    <div class="lesson-summary-box">
+
+        <div class="summary-icon">
+            ⭐
+        </div>
+
+        <div>
+
+            <h3>
+                สรุปสิ่งที่ได้เรียนรู้
+            </h3>
+
+            <p>
+                การสืบค้นข้อมูลโดยใช้อินเทอร์เน็ต
+                ช่วยให้เราค้นหาข้อมูลที่ต้องการได้
+                โดยควรรู้จักเว็บไซต์ เว็บเบราว์เซอร์
+                Search Engine และการใช้คำค้น
+                เพื่อให้สามารถค้นหาข้อมูลได้อย่างเหมาะสม
+            </p>
+
+        </div>
+
+    </div>
+<!-- =====================================================
+     อินโฟกราฟิกสรุปบทเรียน
+====================================================== -->
+
+<div class="lesson-infographic">
+
+    <div class="infographic-title">
+
+        <span>📌</span>
+
+        <div>
+            <h2>สรุปบทที่ 1</h2>
+            <p>การสืบค้นข้อมูลโดยใช้อินเทอร์เน็ต</p>
+        </div>
+
+    </div>
+
+
+    <div class="infographic-image">
+
+        <img
+            src="รูปที่1.png"
+            alt="อินโฟกราฟิกสรุปบทที่ 1 การสืบค้นข้อมูลโดยใช้อินเทอร์เน็ต">
+
+    </div>
+
+</div>
+<!-- =====================================================
+     กิจกรรมผ่านบทที่ 1
+====================================================== -->
+
+<div id="activity1" class="search-mission">
+
+    <!-- หัวกิจกรรม -->
+
+    <div class="search-mission-header">
+
+        <div class="mission-label">
+            🎯 MISSION
+        </div>
+
+        <h2>
+            🕵️ ภารกิจนักสืบจิ๋ว
+        </h2>
+
+        <p>
+            เรียงขั้นตอนการสืบค้นข้อมูลให้ถูกต้อง
+            เพื่อผ่านบทที่ 1
+        </p>
+
+    </div>
+
+
+    <!-- คำแนะนำ -->
+
+    <div class="mission-help">
+
+        <span>💡</span>
+
+        <div>
+
+            <b>ภารกิจของคุณ</b>
+
+            <p>
+                ลากการ์ดทั้ง 4 ใบ
+                ไปเรียงตามลำดับขั้นตอนการสืบค้นข้อมูล
+                แบบ Search Engine
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- การ์ดภารกิจ -->
+
+    <h3 class="mission-section-title">
+        🧩 การ์ดภารกิจ
+    </h3>
+
+
+    <div
+        id="missionCards"
+        class="mission-cards">
+
+        <div
+            class="mission-card-item"
+            draggable="true"
+            data-step="1">
+
+            <span>🌐</span>
+
+            <b>
+                เปิดเว็บเบราว์เซอร์
+            </b>
+
+        </div>
+
+
+        <div
+            class="mission-card-item"
+            draggable="true"
+            data-step="3">
+
+            <span>🔎</span>
+
+            <b>
+                ระบุคำค้น
+            </b>
+
+        </div>
+
+
+        <div
+            class="mission-card-item"
+            draggable="true"
+            data-step="4">
+
+            <span>📋</span>
+
+            <b>
+                เลือกข้อมูลที่ต้องการ
+            </b>
+
+        </div>
+
+
+        <div
+            class="mission-card-item"
+            draggable="true"
+            data-step="2">
+
+            <span>🔍</span>
+
+            <b>
+                เข้าเว็บไซต์ Search Engine
+            </b>
+
+        </div>
+
+    </div>
+
+
+    <!-- พื้นที่วาง -->
+
+    <h3 class="mission-section-title">
+        🗺️ เส้นทางการสืบค้นข้อมูล
+    </h3>
+
+
+    <div
+        id="missionSlots"
+        class="mission-slots">
+
+        <div
+            class="mission-slot"
+            data-position="1">
+
+            <span class="slot-number">
+                01
+            </span>
+
+            <span class="slot-text">
+                ลากการ์ดมาวางที่นี่
+            </span>
+
+        </div>
+
+
+        <div
+            class="mission-slot"
+            data-position="2">
+
+            <span class="slot-number">
+                02
+            </span>
+
+            <span class="slot-text">
+                ลากการ์ดมาวางที่นี่
+            </span>
+
+        </div>
+
+
+        <div
+            class="mission-slot"
+            data-position="3">
+
+            <span class="slot-number">
+                03
+            </span>
+
+            <span class="slot-text">
+                ลากการ์ดมาวางที่นี่
+            </span>
+
+        </div>
+
+
+        <div
+            class="mission-slot"
+            data-position="4">
+
+            <span class="slot-number">
+                04
+            </span>
+
+            <span class="slot-text">
+                ลากการ์ดมาวางที่นี่
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- ปุ่มตรวจ -->
+
+    <div class="mission-check-area">
+
+        <button
+            class="btn primary"
+            onclick="checkSearchMission()">
+
+            🚀 ตรวจภารกิจ
+
+        </button>
+
+    </div>
+
+
+    <!-- ผลลัพธ์ -->
+
+    <div
+        id="searchMissionResult"
+        class="search-mission-result">
+    </div>
+
+
+    <!-- ไปบทที่ 2 -->
+
+    <div
+        id="searchMissionNext"
+        class="mission-next">
+
+        <button
+            class="btn green"
+            onclick="go('ch2')">
+
+            🎉 ผ่านบทที่ 1 → ไปบทที่ 2
+
+        </button>
+
+    </div>
+
+</div>
+
+</section>
+<!-- =====================================================
+     บทที่ 2 : ข้อตกลงในการใช้อินเทอร์เน็ต
+====================================================== -->
+
+<section id="ch2" class="page content">
+
+    <!-- =================================================
+         หัวข้อบทเรียน
+    ================================================== -->
+
+    <div class="lesson-header-box">
+
+        <div class="lesson-label">
+            🤝 LESSON 02
+        </div>
+
+        <h2>
+            บทที่ 2 ข้อตกลงในการใช้อินเทอร์เน็ต
+        </h2>
+
+        <p>
+            เรียนรู้แนวทางการใช้อินเทอร์เน็ตอย่างเหมาะสม
+            รู้จักการใช้ภาษาที่สุภาพ การไม่เผยแพร่ข้อมูลที่ไม่เหมาะสม
+            และการเคารพสิทธิและข้อมูลส่วนตัวของผู้อื่น
+        </p>
+
+    </div>
+
+
+    <!-- =================================================
+         ความหมายของข้อตกลงในการใช้อินเทอร์เน็ต
+    ================================================== -->
+
+    <div class="lesson-topic-box">
+
+        <div class="topic-title">
+
+            <span class="topic-icon">
+                📚
+            </span>
+
+            <div>
+
+                <h3>
+                    ความหมายของข้อตกลงในการใช้อินเทอร์เน็ต
+                </h3>
+
+            </div>
+
+        </div>
+
+
+        <div class="topic-content">
+
+            <p>
+                <b>ข้อตกลงในการใช้งานอินเทอร์เน็ต</b> คือ
+                แนวทางที่ผู้ใช้อินเทอร์เน็ตควรปฏิบัติตาม
+                เพื่อป้องกันไม่ให้เกิดความเสียหายต่อตนเองและผู้อื่น
+                และช่วยให้สามารถใช้อินเทอร์เน็ตได้อย่างเหมาะสม
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         ข้อตกลงที่ 1
+    ================================================== -->
+
+    <div class="lesson-topic-box">
+
+        <div class="topic-title">
+
+            <span class="topic-icon">
+                💬
+            </span>
+
+            <div>
+
+                <span class="topic-number">
+                    ข้อตกลงที่ 01
+                </span>
+
+                <h3>
+                    ใช้ภาษาที่สุภาพและเหมาะสม
+                </h3>
+
+            </div>
+
+        </div>
+
+
+        <div class="topic-intro">
+
+            <p>
+                เมื่อสื่อสารกับผู้อื่นผ่านอินเทอร์เน็ต
+                ควรใช้คำพูดและข้อความที่สุภาพ
+            </p>
+
+        </div>
+
+
+        <!-- สิ่งที่ควรปฏิบัติ -->
+
+        <div class="rule-box rule-blue">
+
+            <div class="rule-box-title">
+                ✅ สิ่งที่ควรปฏิบัติ
+            </div>
+
+            <ul>
+
+                <li>
+                    ใช้ภาษาที่สุภาพ
+                </li>
+
+                <li>
+                    ไม่ใช้คำหยาบคาย
+                </li>
+
+                <li>
+                    ไม่ล้อเลียนหรือทำให้ผู้อื่นเสียหาย
+                </li>
+
+                <li>
+                    ใช้ภาษาให้เหมาะสมกับบุคคลและสถานการณ์
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <!-- ตัวอย่าง -->
+
+        <div class="example-box example-blue">
+
+            <div class="example-title">
+                💡 ตัวอย่าง
+            </div>
+
+            <p>
+                หากพูดคุยกับเพื่อนผ่านอินเทอร์เน็ต
+                ควรใช้ข้อความที่สุภาพ
+                ไม่ใช้คำพูดที่ทำให้เพื่อนรู้สึกไม่ดี
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         ข้อตกลงที่ 2
+    ================================================== -->
+
+    <div class="lesson-topic-box">
+
+        <div class="topic-title">
+
+            <span class="topic-icon">
+                📢
+            </span>
+
+            <div>
+
+                <span class="topic-number">
+                    ข้อตกลงที่ 02
+                </span>
+
+                <h3>
+                    ไม่เผยแพร่ข้อมูลที่ไม่เหมาะสม
+                </h3>
+
+            </div>
+
+        </div>
+
+
+        <div class="topic-intro">
+
+            <p>
+                ไม่ควรนำข้อมูลหรือเนื้อหาที่ไม่เหมาะสม
+                ไปเผยแพร่บนอินเทอร์เน็ต
+                เพราะอาจทำให้ผู้อื่นได้รับความเสียหาย
+                หรือเกิดความเข้าใจผิด
+            </p>
+
+        </div>
+
+
+        <!-- สิ่งที่ควรปฏิบัติ -->
+
+        <div class="rule-box rule-green">
+
+            <div class="rule-box-title">
+                ✅ สิ่งที่ควรปฏิบัติ
+            </div>
+
+            <ul>
+
+                <li>
+                    ไม่เผยแพร่ข้อมูลที่ทำให้ผู้อื่นเสียหาย
+                </li>
+
+                <li>
+                    ไม่เผยแพร่ภาพหรือเนื้อหาที่ไม่เหมาะสม
+                </li>
+
+                <li>
+                    ควรตรวจสอบข้อมูลก่อนนำไปเผยแพร่
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <!-- ตัวอย่าง -->
+
+        <div class="example-box example-green">
+
+            <div class="example-title">
+                💡 ตัวอย่าง
+            </div>
+
+            <p>
+                ไม่ควรนำภาพของเพื่อนที่กำลังทำกิจกรรม
+                ที่ไม่เหมาะสมไปเผยแพร่
+                โดยไม่ได้รับอนุญาต
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         ข้อตกลงที่ 3
+    ================================================== -->
+
+    <div class="lesson-topic-box">
+
+        <div class="topic-title">
+
+            <span class="topic-icon">
+                🔐
+            </span>
+
+            <div>
+
+                <span class="topic-number">
+                    ข้อตกลงที่ 03
+                </span>
+
+                <h3>
+                    เคารพสิทธิและข้อมูลส่วนตัวของผู้อื่น
+                </h3>
+
+            </div>
+
+        </div>
+
+
+        <div class="topic-intro">
+
+            <p>
+                ข้อมูลส่วนตัวของบุคคลอื่นควรได้รับการเคารพ
+                และไม่ควรนำไปใช้หรือเผยแพร่
+                โดยไม่ได้รับอนุญาต
+            </p>
+
+        </div>
+
+
+        <!-- สิ่งที่ควรปฏิบัติ -->
+
+        <div class="rule-box rule-purple">
+
+            <div class="rule-box-title">
+                ✅ สิ่งที่ควรปฏิบัติ
+            </div>
+
+            <ul>
+
+                <li>
+                    ไม่ใช้ข้อมูลส่วนตัวของผู้อื่น
+                    โดยไม่ได้รับอนุญาต
+                </li>
+
+                <li>
+                    ไม่อ่านข้อความหรือข้อมูลของผู้อื่น
+                    โดยไม่ได้รับอนุญาต
+                </li>
+
+                <li>
+                    หากต้องการนำข้อมูลของผู้อื่นไปเผยแพร่
+                    ควรขออนุญาตก่อน
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <!-- ตัวอย่าง -->
+
+        <div class="example-box example-purple">
+
+            <div class="example-title">
+                💡 ตัวอย่าง
+            </div>
+
+            <p>
+                หากต้องการนำรูปเพื่อนลงในเว็บไซต์
+                หรือสื่อออนไลน์
+                ควรขออนุญาตเพื่อนก่อน
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         สรุปบทเรียน
+    ================================================== -->
+
+    <div class="lesson-summary-box">
+
+        <div class="summary-icon">
+            ⭐
+        </div>
+
+        <div>
+
+            <h3>
+                สรุปสิ่งที่ได้เรียนรู้
+            </h3>
+
+            <p>
+                การใช้อินเทอร์เน็ตอย่างเหมาะสม
+                ควรใช้ภาษาที่สุภาพ
+                ไม่เผยแพร่ข้อมูลที่ไม่เหมาะสม
+                และเคารพสิทธิและข้อมูลส่วนตัวของผู้อื่น
+                เพื่อให้การใช้อินเทอร์เน็ตเป็นไปอย่างปลอดภัย
+                และไม่สร้างความเสียหายแก่ผู้อื่น
+            </p>
+
+        </div>
+
+    </div>
+
+<!-- =====================================================
+     อินโฟกราฟิกสรุปบทที่ 2
+====================================================== -->
+
+<div class="lesson-infographic">
+
+    <div class="infographic-title">
+
+        <span>📌</span>
+
+        <div>
+            <h2>สรุปบทที่ 2</h2>
+
+            <p>
+                ข้อตกลงในการใช้อินเทอร์เน็ต
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="infographic-image">
+
+        <img
+            src="รูปที่2.png"
+            alt="อินโฟกราฟิกสรุปบทที่ 2 ข้อตกลงในการใช้อินเทอร์เน็ต">
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     กิจกรรมผ่านบทที่ 2
+====================================================== -->
+
+<div id="activity2" class="internet-rule-mission">
+
+    <!-- หัวกิจกรรม -->
+
+    <div class="internet-rule-header">
+
+        <div class="mission-label">
+            🎯 MISSION
+        </div>
+
+        <h2>
+            🕵️ ภารกิจนักสืบอินเทอร์เน็ตที่ดี
+        </h2>
+
+        <p>
+            ลากการ์ดไปใส่หมวดหมู่ของข้อตกลงในการใช้อินเทอร์เน็ตให้ถูกต้อง
+            เพื่อผ่านบทที่ 2
+        </p>
+
+    </div>
+
+
+    <!-- คำแนะนำ -->
+
+    <div class="internet-rule-help">
+
+        <span>💡</span>
+
+        <div>
+
+            <b>
+                ภารกิจของคุณ
+            </b>
+
+            <p>
+                ลากการ์ดทั้ง 6 ใบ
+                ไปยังหมวดหมู่ที่ถูกต้อง
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         การ์ดคำตอบ
+    ================================================== -->
+
+    <h3 class="mission-section-title">
+        🧩 การ์ดสถานการณ์
+    </h3>
+
+
+    <div
+        id="ruleMissionCards"
+        class="rule-mission-cards">
+
+
+        <!-- การ์ด 1 -->
+
+        <div
+            class="rule-card-item"
+            draggable="true"
+            data-category="polite">
+
+            <span>💬</span>
+
+            <b>
+                ใช้คำพูดสุภาพในการพูดคุยออนไลน์
+            </b>
+
+        </div>
+
+
+        <!-- การ์ด 2 -->
+
+        <div
+            class="rule-card-item"
+            draggable="true"
+            data-category="polite">
+
+            <span>📢</span>
+
+            <b>
+                ไม่ใช้คำหยาบคายในการสื่อสาร
+            </b>
+
+        </div>
+
+
+        <!-- การ์ด 3 -->
+
+        <div
+            class="rule-card-item"
+            draggable="true"
+            data-category="publish">
+
+            <span>🚫</span>
+
+            <b>
+                ไม่เผยแพร่ภาพของเพื่อนโดยไม่ได้รับอนุญาต
+            </b>
+
+        </div>
+
+
+        <!-- การ์ด 4 -->
+
+        <div
+            class="rule-card-item"
+            draggable="true"
+            data-category="publish">
+
+            <span>🔎</span>
+
+            <b>
+                ตรวจสอบข้อมูลก่อนนำไปเผยแพร่
+            </b>
+
+        </div>
+
+
+        <!-- การ์ด 5 -->
+
+        <div
+            class="rule-card-item"
+            draggable="true"
+            data-category="privacy">
+
+            <span>🔐</span>
+
+            <b>
+                ไม่อ่านข้อความของผู้อื่นโดยไม่ได้รับอนุญาต
+            </b>
+
+        </div>
+
+
+        <!-- การ์ด 6 -->
+
+        <div
+            class="rule-card-item"
+            draggable="true"
+            data-category="privacy">
+
+            <span>🤝</span>
+
+            <b>
+                ขออนุญาตเพื่อนก่อนนำรูปไปใช้
+            </b>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         หมวดหมู่
+    ================================================== -->
+
+    <h3 class="mission-section-title">
+        🗂️ หมวดหมู่ข้อตกลง
+    </h3>
+
+
+    <div class="rule-category-grid">
+
+
+        <!-- หมวดที่ 1 -->
+
+        <div
+            class="rule-category polite-category"
+            data-category="polite">
+
+            <div class="category-icon">
+                💬
+            </div>
+
+            <h3>
+                ใช้ภาษาที่สุภาพ
+                และเหมาะสม
+            </h3>
+
+            <p>
+                ลากการ์ดมาวางที่นี่
+            </p>
+
+            <div class="category-drop-area">
+
+            </div>
+
+        </div>
+
+
+        <!-- หมวดที่ 2 -->
+
+        <div
+            class="rule-category publish-category"
+            data-category="publish">
+
+            <div class="category-icon">
+                🚫
+            </div>
+
+            <h3>
+                ไม่เผยแพร่ข้อมูล
+                ที่ไม่เหมาะสม
+            </h3>
+
+            <p>
+                ลากการ์ดมาวางที่นี่
+            </p>
+
+            <div class="category-drop-area">
+
+            </div>
+
+        </div>
+
+
+        <!-- หมวดที่ 3 -->
+
+        <div
+            class="rule-category privacy-category"
+            data-category="privacy">
+
+            <div class="category-icon">
+                🔐
+            </div>
+
+            <h3>
+                เคารพสิทธิและ
+                ข้อมูลส่วนตัวของผู้อื่น
+            </h3>
+
+            <p>
+                ลากการ์ดมาวางที่นี่
+            </p>
+
+            <div class="category-drop-area">
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- =================================================
+         ปุ่มตรวจ
+    ================================================== -->
+
+    <div class="rule-mission-check">
+
+        <button
+            class="btn primary"
+            onclick="checkInternetRuleMission()">
+
+            🚀 ตรวจภารกิจ
+
+        </button>
+
+    </div>
+
+
+    <!-- =================================================
+         ผลลัพธ์
+    ================================================== -->
+
+    <div
+        id="internetRuleResult"
+        class="rule-mission-result">
+    </div>
+
+
+    <!-- =================================================
+         ไปบทที่ 3
+    ================================================== -->
+
+    <div
+        id="internetRuleNext"
+        class="mission-next">
+
+        <button
+            class="btn green"
+            onclick="go('ch3')">
+
+            🎉 ผ่านบทที่ 2 → ไปบทที่ 3
+
+        </button>
+
+    </div>
+
+</div>
+</section>
+
+<!-- =====================================================
+     บทที่ 3 : การใช้เทคโนโลยีสารสนเทศอย่างปลอดภัย
+====================================================== -->
+
+<section id="ch3" class="page content">
+
+    <!-- =================================================
+         หัวข้อบทเรียน
+    ================================================== -->
+
+    <div class="lesson-header-box">
+
+        <div class="lesson-label">
+            🔐 LESSON 03
+        </div>
+
+        <h2>
+            บทที่ 3 การใช้เทคโนโลยีสารสนเทศอย่างปลอดภัย
+        </h2>
+
+        <p>
+            เรียนรู้ความหมายของเทคโนโลยีสารสนเทศ
+            และแนวทางการใช้งานอย่างปลอดภัย
+            เพื่อป้องกันปัญหาที่อาจเกิดขึ้นกับตนเองและผู้อื่น
+        </p>
+
+    </div>
+
+
+    <!-- =================================================
+         ความหมาย
+    ================================================== -->
+
+    <div class="lesson-topic-box">
+
+        <div class="topic-title">
+
+            <span class="topic-icon">
+                💻
+            </span>
+
+            <div>
+
+                <h3>
+                    ความหมายของการใช้เทคโนโลยีสารสนเทศอย่างปลอดภัย
+                </h3>
+
+            </div>
+
+        </div>
+
+
+        <div class="topic-content">
+
+            <p>
+                <b>เทคโนโลยีสารสนเทศ (Information Technology)</b>
+                คือ การนำเทคโนโลยี เช่น คอมพิวเตอร์
+                มาใช้ในการจัดเก็บ การประมวลผล
+                และการสื่อสารข้อมูลในรูปแบบต่าง ๆ
+                เช่น <b>ข้อความ รูปภาพ เสียง และวิดีโอ</b>
+            </p>
+
+            <p>
+                การใช้เทคโนโลยีสารสนเทศควรคำนึงถึง
+                <b>ความปลอดภัยของข้อมูลและการใช้งาน</b>
+                เพื่อป้องกันปัญหาที่อาจเกิดขึ้นกับตนเองและผู้อื่น
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         หัวข้อ วิธีใช้เทคโนโลยีสารสนเทศอย่างปลอดภัย
+    ================================================== -->
+
+    <div class="lesson-topic-box">
+
+        <div class="topic-title">
+
+            <span class="topic-icon">
+                🔐
+            </span>
+
+            <div>
+
+                <span class="topic-number">
+                    แนวทางการใช้งานอย่างปลอดภัย
+                </span>
+
+                <h3>
+                    วิธีใช้เทคโนโลยีสารสนเทศอย่างปลอดภัย
+                </h3>
+
+            </div>
+
+        </div>
+
+
+        <div class="topic-intro">
+
+            
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         ข้อที่ 1
+    ================================================== -->
+
+    <div class="lesson-topic-box safe-topic safe-blue">
+
+        <div class="topic-title">
+
+            <span class="topic-icon">
+                👤
+            </span>
+
+            <div>
+
+                <span class="topic-number">
+                    ข้อที่ 01
+                </span>
+
+                <h3>
+                    ไม่เปิดเผยข้อมูลส่วนตัว
+                </h3>
+
+            </div>
+
+        </div>
+
+
+        <div class="topic-intro">
+
+            <p>
+                ข้อมูลส่วนตัวควรเก็บรักษาไว้เป็นความลับ
+                ไม่ควรเปิดเผยข้อมูลให้ผู้อื่นโดยไม่จำเป็น
+            </p>
+
+        </div>
+
+
+        <div class="safe-practice-box">
+
+            <div class="safe-practice-title">
+                ✅ ควรปฏิบัติ
+            </div>
+
+            <ul>
+
+                <li>
+                    ระมัดระวังการเปิดเผยข้อมูลส่วนตัว
+                </li>
+
+                <li>
+                    ไม่เผยแพร่ข้อมูลส่วนตัวให้บุคคลอื่น
+                    โดยไม่จำเป็น
+                </li>
+
+                <li>
+                    ตรวจสอบก่อนกรอกหรือส่งข้อมูลส่วนตัว
+                    บนอินเทอร์เน็ต
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <div class="example-box example-blue">
+
+            <div class="example-title">
+                💡 ตัวอย่าง
+            </div>
+
+            <p>
+                การไม่เปิดเผยข้อมูลส่วนตัว
+                ช่วยป้องกันไม่ให้ผู้อื่นนำข้อมูล
+                ไปใช้ในทางที่ไม่เหมาะสม
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         ข้อที่ 2
+    ================================================== -->
+
+    <div class="lesson-topic-box safe-topic safe-green">
+
+        <div class="topic-title">
+
+            <span class="topic-icon">
+                🔑
+            </span>
+
+            <div>
+
+                <span class="topic-number">
+                    ข้อที่ 02
+                </span>
+
+                <h3>
+                    กำหนดรหัสผ่าน
+                </h3>
+
+            </div>
+
+        </div>
+
+
+        <div class="topic-intro">
+
+            <p>
+                การกำหนดรหัสผ่านช่วยป้องกัน
+                ไม่ให้บุคคลอื่นเข้าถึงบัญชี
+                หรือข้อมูลส่วนตัวของเรา
+            </p>
+
+        </div>
+
+
+        <div class="safe-practice-box">
+
+            <div class="safe-practice-title">
+                ✅ ควรปฏิบัติ
+            </div>
+
+            <ul>
+
+                <li>
+                    ตั้งรหัสผ่านสำหรับบัญชีที่ใช้งาน
+                </li>
+
+                <li>
+                    ไม่บอกรหัสผ่านให้ผู้อื่น
+                </li>
+
+                <li>
+                    ควรรักษารหัสผ่านไว้เป็นความลับ
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <div class="example-box example-green">
+
+            <div class="example-title">
+                💡 ตัวอย่าง
+            </div>
+
+            <p>
+                การกำหนดรหัสผ่านช่วยป้องกัน
+                ไม่ให้ผู้อื่นเข้าถึงการใช้งาน
+                หรือข้อมูลส่วนตัวของเรา
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         ข้อที่ 3
+    ================================================== -->
+
+    <div class="lesson-topic-box safe-topic safe-purple">
+
+        <div class="topic-title">
+
+            <span class="topic-icon">
+                🚪
+            </span>
+
+            <div>
+
+                <span class="topic-number">
+                    ข้อที่ 03
+                </span>
+
+                <h3>
+                    ออกจากระบบทุกครั้งหลังใช้งาน
+                </h3>
+
+            </div>
+
+        </div>
+
+
+        <div class="topic-intro">
+
+            <p>
+                เมื่อใช้งานเว็บไซต์หรือบัญชีต่าง ๆ เสร็จแล้ว
+                ควร <b>ออกจากระบบ (Sign out)</b>
+                ทุกครั้ง
+            </p>
+
+            <p>
+                เพื่อช่วยป้องกันไม่ให้ผู้อื่น
+                เข้ามาใช้งานบัญชีหรือเข้าถึงข้อมูลส่วนตัวของเราได้
+            </p>
+
+        </div>
+
+
+        <div class="safe-practice-box">
+
+            <div class="safe-practice-title">
+                ✅ ควรปฏิบัติ
+            </div>
+
+            <ul>
+
+                <li>
+                    ออกจากระบบเมื่อใช้งานเสร็จ
+                </li>
+
+                <li>
+                    ตรวจสอบให้แน่ใจว่าออกจากบัญชีแล้ว
+                </li>
+
+                <li>
+                    โดยเฉพาะเมื่อใช้งานคอมพิวเตอร์ร่วมกับผู้อื่น
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <div class="example-box example-purple">
+
+            <div class="example-title">
+                💡 ตัวอย่าง
+            </div>
+
+            <p>
+                เมื่อใช้บัญชีบนคอมพิวเตอร์ของโรงเรียนเสร็จแล้ว
+                ควรออกจากระบบก่อนลุกจากเครื่อง
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         ข้อที่ 4
+    ================================================== -->
+
+    <div class="lesson-topic-box safe-topic safe-orange">
+
+        <div class="topic-title">
+
+            <span class="topic-icon">
+                🛡️
+            </span>
+
+            <div>
+
+                <span class="topic-number">
+                    ข้อที่ 04
+                </span>
+
+                <h3>
+                    ติดตั้งโปรแกรมป้องกันไวรัส
+                </h3>
+
+            </div>
+
+        </div>
+
+
+        <div class="topic-intro">
+
+            <p>
+                ควรติดตั้ง <b>โปรแกรมป้องกันไวรัส</b>
+                เพื่อช่วยป้องกันภัยที่อาจเกิดขึ้น
+                กับข้อมูลและอุปกรณ์
+                จากโปรแกรมที่เป็นอันตราย
+            </p>
+
+        </div>
+
+
+        <div class="safe-practice-box">
+
+            <div class="safe-practice-title">
+                ✅ ควรปฏิบัติ
+            </div>
+
+            <ul>
+
+                <li>
+                    ติดตั้งโปรแกรมป้องกันไวรัส
+                </li>
+
+                <li>
+                    ระมัดระวังไฟล์หรือโปรแกรม
+                    ที่ไม่ทราบแหล่งที่มา
+                </li>
+
+                <li>
+                    ไม่ดาวน์โหลดสิ่งที่ไม่น่าเชื่อถือ
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <div class="example-box example-orange">
+
+            <div class="example-title">
+                💡 ตัวอย่าง
+            </div>
+
+            <p>
+                การติดตั้งโปรแกรมป้องกันไวรัส
+                ช่วยป้องกันอันตรายที่อาจเกิดขึ้น
+                กับข้อมูลและอุปกรณ์
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         ข้อที่ 5
+    ================================================== -->
+
+    <div class="lesson-topic-box safe-topic safe-pink">
+
+        <div class="topic-title">
+
+            <span class="topic-icon">
+                🆘
+            </span>
+
+            <div>
+
+                <span class="topic-number">
+                    ข้อที่ 05
+                </span>
+
+                <h3>
+                    ขอความช่วยเหลือเมื่อเกิดปัญหา
+                </h3>
+
+            </div>
+
+        </div>
+
+
+        <div class="topic-intro">
+
+            <p>
+                หากพบปัญหาหรือเหตุการณ์ที่ไม่ปลอดภัย
+                จากการใช้เทคโนโลยีสารสนเทศ
+                ไม่ควรแก้ไขปัญหาด้วยตนเองเพียงลำพัง
+            </p>
+
+        </div>
+
+
+        <div class="safe-practice-box">
+
+            <div class="safe-practice-title">
+                ✅ ควรปฏิบัติ
+            </div>
+
+            <ul>
+
+                <li>
+                    ขอความช่วยเหลือจากผู้ปกครอง
+                </li>
+
+                <li>
+                    ขอความช่วยเหลือจากครู
+                </li>
+
+                <li>
+                    บอกผู้ใหญ่ที่ไว้ใจได้
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <div class="example-box example-pink">
+
+            <div class="example-title">
+                💡 ตัวอย่าง
+            </div>
+
+            <p>
+                หากพบว่าบัญชีถูกเข้าถึงโดยบุคคลอื่น
+                หรือพบเหตุการณ์ที่ทำให้รู้สึกไม่ปลอดภัย
+                ควรรีบบอกผู้ใหญ่ที่ไว้ใจได้
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         สรุปบทเรียน
+    ================================================== -->
+
+    <div class="lesson-summary-box">
+
+        <div class="summary-icon">
+            ⭐
+        </div>
+
+        <div>
+
+            <h3>
+                สรุปสิ่งที่ได้เรียนรู้
+            </h3>
+
+            <p>
+                การใช้เทคโนโลยีสารสนเทศอย่างปลอดภัย
+                ควรเริ่มจากการปกป้องข้อมูลส่วนตัว
+                กำหนดรหัสผ่าน
+                ออกจากระบบหลังใช้งาน
+                ติดตั้งโปรแกรมป้องกันไวรัส
+                และขอความช่วยเหลือจากผู้ใหญ่ที่ไว้ใจได้
+                เมื่อเกิดปัญหา
+            </p>
+
+        </div>
+
+    </div>
+<!-- =====================================================
+     อินโฟกราฟิกสรุปบทที่ 3
+====================================================== -->
+
+<div class="lesson-infographic">
+
+    <div class="infographic-title">
+
+        <span>📌</span>
+
+        <div>
+            <h2>สรุปบทที่ 3</h2>
+
+            <p>
+                การใช้เทคโนโลยีสารสนเทศอย่างปลอดภัย
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="infographic-image">
+
+        <img
+            src="รูปที่3.png"
+            alt="อินโฟกราฟิกสรุปบทที่ 3 การใช้เทคโนโลยีสารสนเทศอย่างปลอดภัย">
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     กิจกรรมผ่านบทที่ 3
+====================================================== -->
+
+<div id="activity3" class="safe-tech-mission">
+
+    <!-- =================================================
+         หัวกิจกรรม
+    ================================================== -->
+
+    <div class="safe-tech-header">
+
+        <div class="mission-label">
+            🎯 MISSION
+        </div>
+
+        <h2>
+            🛡️ ภารกิจผู้พิทักษ์เทคโนโลยี
+        </h2>
+
+        <p>
+            ลากสถานการณ์ไปจับคู่กับวิธีใช้เทคโนโลยีสารสนเทศอย่างปลอดภัย
+            ให้ถูกต้อง เพื่อผ่านบทที่ 3
+        </p>
+
+    </div>
+
+
+    <!-- =================================================
+         คำแนะนำ
+    ================================================== -->
+
+    <div class="safe-tech-help">
+
+        <span>💡</span>
+
+        <div>
+
+            <b>
+                ภารกิจของคุณ
+            </b>
+
+            <p>
+                ลากการ์ดสถานการณ์ทั้ง 5 ใบ
+                ไปยังวิธีปฏิบัติที่ถูกต้อง
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         การ์ดสถานการณ์
+    ================================================== -->
+
+    <h3 class="mission-section-title">
+        🧩 การ์ดสถานการณ์
+    </h3>
+
+
+    <div
+        id="safeTechCards"
+        class="safe-tech-cards">
+
+
+        <!-- การ์ด 1 -->
+
+        <div
+            class="safe-tech-card"
+            draggable="true"
+            data-category="personal">
+
+            <span>👤</span>
+
+            <b>
+                ไม่บอกชื่อ ที่อยู่ และข้อมูลส่วนตัว
+                ให้คนที่ไม่รู้จักบนอินเทอร์เน็ต
+            </b>
+
+        </div>
+
+
+        <!-- การ์ด 2 -->
+
+        <div
+            class="safe-tech-card"
+            draggable="true"
+            data-category="password">
+
+            <span>🔑</span>
+
+            <b>
+                ตั้งรหัสผ่านสำหรับบัญชี
+                และไม่บอกรหัสผ่านให้ผู้อื่น
+            </b>
+
+        </div>
+
+
+        <!-- การ์ด 3 -->
+
+        <div
+            class="safe-tech-card"
+            draggable="true"
+            data-category="signout">
+
+            <span>🚪</span>
+
+            <b>
+                ใช้บัญชีบนคอมพิวเตอร์โรงเรียนเสร็จแล้ว
+                กดออกจากระบบก่อนลุกจากเครื่อง
+            </b>
+
+        </div>
+
+
+        <!-- การ์ด 4 -->
+
+        <div
+            class="safe-tech-card"
+            draggable="true"
+            data-category="antivirus">
+
+            <span>🛡️</span>
+
+            <b>
+                ก่อนดาวน์โหลดโปรแกรม
+                ควรตรวจสอบแหล่งที่มาและความน่าเชื่อถือ
+            </b>
+
+        </div>
+
+
+        <!-- การ์ด 5 -->
+
+        <div
+            class="safe-tech-card"
+            draggable="true"
+            data-category="help">
+
+            <span>🆘</span>
+
+            <b>
+                หากพบว่าบัญชีถูกผู้อื่นเข้าถึง
+                ควรรีบบอกผู้ใหญ่ที่ไว้ใจได้
+            </b>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         หมวดหมู่
+    ================================================== -->
+
+    <h3 class="mission-section-title">
+        🗂️ วิธีใช้เทคโนโลยีอย่างปลอดภัย
+    </h3>
+
+
+    <div class="safe-tech-category-grid">
+
+
+        <!-- หมวด 1 -->
+
+        <div
+            class="safe-tech-category personal-category"
+            data-category="personal">
+
+            <div class="safe-category-icon">
+                👤
+            </div>
+
+            <h3>
+                ไม่เปิดเผยข้อมูลส่วนตัว
+            </h3>
+
+            <p>
+                ลากการ์ดมาวางที่นี่
+            </p>
+
+            <div class="safe-drop-area">
+            </div>
+
+        </div>
+
+
+        <!-- หมวด 2 -->
+
+        <div
+            class="safe-tech-category password-category"
+            data-category="password">
+
+            <div class="safe-category-icon">
+                🔑
+            </div>
+
+            <h3>
+                กำหนดรหัสผ่าน
+            </h3>
+
+            <p>
+                ลากการ์ดมาวางที่นี่
+            </p>
+
+            <div class="safe-drop-area">
+            </div>
+
+        </div>
+
+
+        <!-- หมวด 3 -->
+
+        <div
+            class="safe-tech-category signout-category"
+            data-category="signout">
+
+            <div class="safe-category-icon">
+                🚪
+            </div>
+
+            <h3>
+                ออกจากระบบทุกครั้ง
+            </h3>
+
+            <p>
+                ลากการ์ดมาวางที่นี่
+            </p>
+
+            <div class="safe-drop-area">
+            </div>
+
+        </div>
+
+
+        <!-- หมวด 4 -->
+
+        <div
+            class="safe-tech-category antivirus-category"
+            data-category="antivirus">
+
+            <div class="safe-category-icon">
+                🛡️
+            </div>
+
+            <h3>
+                ติดตั้งโปรแกรมป้องกันไวรัส
+            </h3>
+
+            <p>
+                ลากการ์ดมาวางที่นี่
+            </p>
+
+            <div class="safe-drop-area">
+            </div>
+
+        </div>
+
+
+        <!-- หมวด 5 -->
+
+        <div
+            class="safe-tech-category help-category"
+            data-category="help">
+
+            <div class="safe-category-icon">
+                🆘
+            </div>
+
+            <h3>
+                ขอความช่วยเหลือเมื่อเกิดปัญหา
+            </h3>
+
+            <p>
+                ลากการ์ดมาวางที่นี่
+            </p>
+
+            <div class="safe-drop-area">
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- =================================================
+         ปุ่มตรวจ
+    ================================================== -->
+
+    <div class="safe-tech-check">
+
+        <button
+            class="btn primary"
+            onclick="checkSafeTechMission()">
+
+            🚀 ตรวจภารกิจ
+
+        </button>
+
+    </div>
+
+
+    <!-- =================================================
+         ผลลัพธ์
+    ================================================== -->
+
+    <div
+        id="safeTechResult"
+        class="safe-tech-result">
+    </div>
+
+
+    <!-- =================================================
+         ไปบทที่ 4
+    ================================================== -->
+
+    <div
+        id="safeTechNext"
+        class="mission-next">
+
+        <button
+            class="btn green"
+            onclick="go('ch4')">
+
+            🎉 ผ่านบทที่ 3 → ไปบทที่ 4
+
+        </button>
+
+    </div>
+
+</div>
+
+</section>
+<!-- =====================================================
+     บทที่ 4 : ข้อดีและข้อเสียจากการใช้เทคโนโลยี
+     สารสนเทศและการสื่อสาร
+====================================================== -->
+
+<section id="ch4" class="page content">
+
+
+    <!-- =================================================
+         หัวข้อบทเรียน
+    ================================================== -->
+
+    <div class="lesson-header-box">
+
+        <div class="lesson-label">
+            💻 LESSON 04
+        </div>
+
+        <h2>
+            บทที่ 4 ข้อดีและข้อเสียจากการใช้
+            เทคโนโลยีสารสนเทศและการสื่อสาร
+        </h2>
+
+        <p>
+            เรียนรู้ประโยชน์และปัญหาที่อาจเกิดขึ้น
+            จากการใช้เทคโนโลยีสารสนเทศและการสื่อสาร
+            เพื่อให้สามารถใช้เทคโนโลยีได้อย่างเหมาะสม
+        </p>
+
+    </div>
+
+
+    <!-- =================================================
+         ความหมาย
+    ================================================== -->
+
+    <div class="lesson-topic-box">
+
+        <div class="topic-title">
+
+            <span class="topic-icon">
+                💻
+            </span>
+
+            <div>
+
+                <h3>
+                    ความหมายของเทคโนโลยีสารสนเทศและการสื่อสาร
+                </h3>
+
+            </div>
+
+        </div>
+
+
+        <div class="topic-content">
+
+            <p>
+                เทคโนโลยีสารสนเทศเป็นการนำเทคโนโลยี
+                เช่น <b>คอมพิวเตอร์</b>
+                มาใช้ในการจัดเก็บ ประมวลผล
+                และสื่อสารข้อมูลในรูปแบบต่าง ๆ
+                เช่น
+                <b>ข้อความ รูปภาพ เสียง และวิดีโอ</b>
+            </p>
+
+            <p>
+                เทคโนโลยีสารสนเทศเข้ามามีบทบาทในชีวิตประจำวัน
+                ทั้งด้านการเรียน การสื่อสาร
+                การค้นหาข้อมูล และความบันเทิง
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+     กล่องใหญ่ : ข้อดี
+====================================================== -->
+
+<div class="advantage-section">
+
+    <!-- หัวข้อหลัก -->
+
+    <div class="section-main-title advantage-title">
+
+        <span class="section-main-icon">
+            ✅
+        </span>
+
+        <div>
+
+            <span class="section-label">
+                ประโยชน์ของเทคโนโลยี
+            </span>
+
+            <h2>
+                ข้อดีจากการใช้เทคโนโลยีสารสนเทศและการสื่อสาร
+            </h2>
+
+            <p>
+                เทคโนโลยีสารสนเทศและการสื่อสาร
+                มีประโยชน์ต่อการเรียน การสื่อสาร
+                การค้นหาข้อมูล และการใช้ชีวิตประจำวัน
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         ข้อดี 1
+    ================================================== -->
+
+    <div class="benefit-card">
+
+        <div class="benefit-number">
+            01
+        </div>
+
+        <div class="benefit-icon">
+            💬
+        </div>
+
+        <div class="benefit-content">
+
+            <h3>
+                ช่วยให้ติดต่อสื่อสารได้อย่างรวดเร็ว
+            </h3>
+
+            <p>
+                เทคโนโลยีช่วยให้สามารถ
+                <b>ติดต่อสื่อสารกับผู้อื่นได้อย่างรวดเร็ว</b>
+                ทำให้การส่งข้อมูลและการพูดคุยสะดวกมากขึ้น
+            </p>
+
+            <div class="mini-example">
+                💡 <b>ตัวอย่าง:</b>
+                การส่งข้อความหรือสื่อสารกับเพื่อนและครู
+                ผ่านอุปกรณ์เทคโนโลยี
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         ข้อดี 2
+    ================================================== -->
+
+    <div class="benefit-card">
+
+        <div class="benefit-number">
+            02
+        </div>
+
+        <div class="benefit-icon">
+            📚
+        </div>
+
+        <div class="benefit-content">
+
+            <h3>
+                ใช้ในการเรียนรู้และทำกิจกรรมต่าง ๆ
+            </h3>
+
+            <p>
+                เทคโนโลยีสามารถนำมาใช้ในการเรียนรู้
+                รวมถึงช่วยทำกิจกรรมต่าง ๆ ได้
+                ทำให้สามารถเข้าถึงข้อมูลและความรู้
+                จากแหล่งต่าง ๆ ได้สะดวก
+            </p>
+
+            <div class="mini-example">
+                💡 <b>ตัวอย่าง:</b>
+                ใช้คอมพิวเตอร์ค้นคว้าข้อมูล
+                เพื่อทำงานหรือศึกษาบทเรียน
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         ข้อดี 3
+    ================================================== -->
+
+    <div class="benefit-card">
+
+        <div class="benefit-number">
+            03
+        </div>
+
+        <div class="benefit-icon">
+            🔎
+        </div>
+
+        <div class="benefit-content">
+
+            <h3>
+                ใช้ในการสืบค้นข้อมูล
+            </h3>
+
+            <p>
+                อินเทอร์เน็ตช่วยให้สามารถค้นหาข้อมูล
+                จากแหล่งต่าง ๆ ได้อย่างสะดวก
+            </p>
+
+            <div class="mini-example">
+                💡 <b>ตัวอย่าง:</b>
+                ค้นหาข้อมูลสำหรับการเรียน
+                ผ่าน Search Engine
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         ข้อดี 4
+    ================================================== -->
+
+    <div class="benefit-card">
+
+        <div class="benefit-number">
+            04
+        </div>
+
+        <div class="benefit-icon">
+            🎬
+        </div>
+
+        <div class="benefit-content">
+
+            <h3>
+                ได้รับความรู้และความบันเทิง
+            </h3>
+
+            <p>
+                เทคโนโลยีช่วยให้ผู้ใช้สามารถรับทั้ง
+                <b>ความรู้และความบันเทิง</b>
+                จากสื่อรูปแบบต่าง ๆ เช่น
+                วิดีโอ เสียง และข้อมูลบนอินเทอร์เน็ต
+            </p>
+
+            <div class="mini-example">
+                💡 <b>ตัวอย่าง:</b>
+                ดูวิดีโอเพื่อเรียนรู้เนื้อหาที่สนใจ
+                หรือรับชมสื่อเพื่อความบันเทิง
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     กล่องใหญ่ : ข้อเสีย
+====================================================== -->
+
+<div class="disadvantage-section">
+
+    <!-- หัวข้อหลัก -->
+
+    <div class="section-main-title disadvantage-title">
+
+        <span class="section-main-icon">
+            ⚠️
+        </span>
+
+        <div>
+
+            <span class="section-label">
+                สิ่งที่ควรระวัง
+            </span>
+
+            <h2>
+                ข้อเสียหรือปัญหาจากการใช้เทคโนโลยีสารสนเทศและการสื่อสาร
+            </h2>
+
+            <p>
+                การใช้เทคโนโลยีสารสนเทศและการสื่อสาร
+                อาจก่อให้เกิดปัญหาได้ หากใช้งานมากเกินไป
+                หรือใช้งานโดยขาดความระมัดระวัง
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         ข้อเสีย 1
+    ================================================== -->
+
+    <div class="problem-card">
+
+        <div class="problem-number">
+            01
+        </div>
+
+        <div class="problem-icon">
+            👥
+        </div>
+
+        <div class="problem-content">
+
+            <h3>
+                การมีส่วนร่วมในสังคมลดลง
+            </h3>
+
+            <p>
+                การใช้เทคโนโลยีมากขึ้นอาจทำให้ผู้ใช้
+                มีปฏิสัมพันธ์หรือมีส่วนร่วมกับคนรอบข้างลดลง
+            </p>
+
+            <div class="problem-example">
+                💡 <b>ตัวอย่าง:</b>
+                ใช้โทรศัพท์หรืออุปกรณ์เทคโนโลยีอยู่ตลอดเวลา
+                จนมีเวลาพูดคุยหรือทำกิจกรรมร่วมกับคนรอบข้างน้อยลง
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         ข้อเสีย 2
+    ================================================== -->
+
+    <div class="problem-card">
+
+        <div class="problem-number">
+            02
+        </div>
+
+        <div class="problem-icon">
+            🔓
+        </div>
+
+        <div class="problem-content">
+
+            <h3>
+                การถูกโจรกรรมข้อมูล
+            </h3>
+
+            <p>
+                ข้อมูลของผู้ใช้อาจถูกนำไปใช้
+                โดยไม่ได้รับอนุญาต
+                หากขาดความระมัดระวังในการใช้งาน
+            </p>
+
+            <div class="problem-example">
+                💡 <b>ตัวอย่าง:</b>
+                ข้อมูลส่วนตัวหรือข้อมูลสำคัญ
+                ถูกผู้อื่นขโมยไป
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         ข้อเสีย 3
+    ================================================== -->
+
+    <div class="problem-card">
+
+        <div class="problem-number">
+            03
+        </div>
+
+        <div class="problem-icon">
+            🎭
+        </div>
+
+        <div class="problem-content">
+
+            <h3>
+                ปัญหาการถูกหลอกลวง
+            </h3>
+
+            <p>
+                การใช้อินเทอร์เน็ตอาจทำให้พบการหลอกลวง
+                เช่น การหลอกให้โอนเงิน
+                หรือหลอกให้เปิดเผยข้อมูล
+            </p>
+
+            <div class="problem-example">
+                💡 <b>ตัวอย่าง:</b>
+                มีผู้ส่งข้อความมาหลอกว่าได้รับรางวัล
+                และให้โอนเงินเพื่อรับรางวัล
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         ข้อเสีย 4
+    ================================================== -->
+
+    <div class="problem-card">
+
+        <div class="problem-number">
+            04
+        </div>
+
+        <div class="problem-icon">
+            🧘
+        </div>
+
+        <div class="problem-content">
+
+            <h3>
+                ปัญหาด้านสุขภาพ
+            </h3>
+
+            <p>
+                การใช้เทคโนโลยีเป็นเวลานาน
+                อาจทำให้เกิดปัญหาด้านสุขภาพได้
+            </p>
+
+            <div class="problem-example">
+                💡 <b>ตัวอย่าง:</b>
+                การใช้คอมพิวเตอร์หรืออุปกรณ์อิเล็กทรอนิกส์
+                เป็นเวลานานอาจทำให้เกิดอาการไม่สบายจากการใช้งาน
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+    <!-- =================================================
+         สรุปบทเรียน
+    ================================================== -->
+
+    <div class="lesson-summary-box">
+
+        <div class="summary-icon">
+            ⭐
+        </div>
+
+        <div>
+
+            <h3>
+                สรุปสิ่งที่ได้เรียนรู้
+            </h3>
+
+            <p>
+                เทคโนโลยีสารสนเทศและการสื่อสาร
+                มีทั้งข้อดีและข้อเสีย
+                เราจึงควรเลือกใช้เทคโนโลยีให้เหมาะสม
+                รู้จักใช้ประโยชน์จากเทคโนโลยี
+                และระมัดระวังปัญหาที่อาจเกิดขึ้น
+            </p>
+
+        </div>
+
+    </div>
+
+
+<!-- =====================================================
+     อินโฟกราฟิก บทที่ 4
+====================================================== -->
+
+<div class="lesson-infographic">
+
+    <div class="infographic-title">
+        <span>📌</span>
+
+        <div>
+            <h2>สรุปบทที่ 4</h2>
+            <p>
+                ข้อดีและข้อเสียจากการใช้เทคโนโลยีสารสนเทศและการสื่อสาร
+            </p>
+        </div>
+    </div>
+
+    <div class="infographic-image">
+        <img
+            src="รูปที่4.png"
+            alt="อินโฟกราฟิกสรุปบทที่ 4 ข้อดีและข้อเสียจากการใช้เทคโนโลยีสารสนเทศและการสื่อสาร">
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     กิจกรรมผ่านบทที่ 4
+====================================================== -->
+
+<div id="activity4" class="tech-effect-mission">
+
+    <div class="mission-header">
+        <div class="mission-icon">🎯</div>
+
+        <div>
+            <span class="mission-label">ภารกิจสุดท้ายของบทที่ 4</span>
+            <h2>🕵️ ภารกิจนักสำรวจเทคโนโลยี</h2>
+
+            <p>
+                ลากสถานการณ์ไปไว้ในช่อง
+                <b>ข้อดี</b> หรือ <b>ข้อเสีย</b>
+                ให้ถูกต้อง
+            </p>
+        </div>
+    </div>
+
+
+    <!-- การ์ดสถานการณ์ -->
+
+    <div class="effect-mission-area">
+
+        <div class="effect-cards-area">
+
+            <h3>📋 สถานการณ์</h3>
+
+            <div id="techEffectCards" class="effect-cards">
+
+                <div class="effect-card"
+                     draggable="true"
+                     data-effect="good">
+                    💬
+                    <span>ส่งข้อความพูดคุยกับเพื่อน
+                    ได้อย่างรวดเร็ว</span>
+                </div>
+
+                <div class="effect-card"
+                     draggable="true"
+                     data-effect="bad">
+                    👥
+                    <span>ใช้โทรศัพท์ตลอดเวลา
+                    จนไม่มีเวลาพูดคุยกับคนรอบข้าง</span>
+                </div>
+
+                <div class="effect-card"
+                     draggable="true"
+                     data-effect="good">
+                    📚
+                    <span>ใช้คอมพิวเตอร์ค้นคว้าข้อมูล
+                    เพื่อทำงาน</span>
+                </div>
+
+                <div class="effect-card"
+                     draggable="true"
+                     data-effect="bad">
+                    🔓
+                    <span>ข้อมูลส่วนตัวถูกผู้อื่น
+                    นำไปใช้โดยไม่ได้รับอนุญาต</span>
+                </div>
+
+                <div class="effect-card"
+                     draggable="true"
+                     data-effect="good">
+                    🔎
+                    <span>ค้นหาข้อมูลสำหรับการเรียน
+                    ผ่าน Search Engine</span>
+                </div>
+
+                <div class="effect-card"
+                     draggable="true"
+                     data-effect="bad">
+                    🎭
+                    <span>ได้รับข้อความหลอกว่า
+                    ได้รับรางวัลและให้โอนเงิน</span>
+                </div>
+
+                <div class="effect-card"
+                     draggable="true"
+                     data-effect="good">
+                    🎬
+                    <span>ดูวิดีโอเพื่อเรียนรู้
+                    และได้รับความบันเทิง</span>
+                </div>
+
+                <div class="effect-card"
+                     draggable="true"
+                     data-effect="bad">
+                    🧘
+                    <span>ใช้คอมพิวเตอร์เป็นเวลานาน
+                    จนเกิดอาการไม่สบาย</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ช่องวาง -->
+
+        <div class="effect-drop-area">
+
+            <div class="effect-category good-effect"
+                 data-category="good">
+
+                <div class="effect-category-title">
+                    <span>✅</span>
+                    <h3>ข้อดี</h3>
+                </div>
+
+                <div class="effect-drop-box"
+                     data-category="good">
+                    <span>ลากสถานการณ์ข้อดีมาวางที่นี่</span>
+                </div>
+
+            </div>
+
+
+            <div class="effect-category bad-effect"
+                 data-category="bad">
+
+                <div class="effect-category-title">
+                    <span>⚠️</span>
+                    <h3>ข้อเสีย</h3>
+                </div>
+
+                <div class="effect-drop-box"
+                     data-category="bad">
+                    <span>ลากสถานการณ์ข้อเสียมาวางที่นี่</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ผลลัพธ์ -->
+
+    <div id="techEffectResult"
+         class="mission-result">
+    </div>
+
+
+    <!-- ปุ่มตรวจสอบ -->
+
+    <button class="mission-check-btn"
+            onclick="checkTechEffectMission()">
+        🔍 ตรวจสอบภารกิจ
+    </button>
+
+
+    <!-- ปุ่มไปบทต่อไป -->
+
+    <button id="techEffectNext"
+            class="mission-next-btn"
+            onclick="go('posttest')"
+            style="display:none;">
+        🎉 ผ่านบทที่ 4 → ไปแบบทดสอบหลังเรียน
+    </button>
+
+</div>
+</section>
+<!-- =====================================================
+     หน้าผลการเรียน
+====================================================== -->
+
+<section id="results" class="page">
+
+    <div class="card">
+
+        <div style="text-align:center; margin-bottom:25px;">
+
+            <div style="font-size:55px;">
+                🏆
+            </div>
+
+            <h2 style="margin:5px 0;">
+                สรุปผลการเรียน
+            </h2>
+
+            <p id="resultStudentName">
+                ผลการเรียนของผู้เรียน
+            </p>
+
+        </div>
+
+
+        <!-- ข้อมูลนักเรียน -->
+
+        <div class="grid">
+
+            <div class="card">
+                <h3>👤 นักเรียน</h3>
+                <p id="resultName">-</p>
+            </div>
+
+            <div class="card">
+                <h3>🏫 ชั้น</h3>
+                <p id="resultClass">-</p>
+            </div>
+
+            <div class="card">
+                <h3>🔢 เลขที่</h3>
+                <p id="resultNo">-</p>
+            </div>
+
+        </div>
+
+
+        <!-- คะแนน -->
+
+        <div class="grid">
+
+            <div class="card" style="text-align:center;">
+
+                <div style="font-size:42px;">
+                    📝
+                </div>
+
+                <h3>
+                    คะแนนก่อนเรียน
+                </h3>
+
+                <div
+                    id="resultPreScore"
+                    style="font-size:2rem;font-weight:700;color:#6c5ce7;">
+                    -
+                </div>
+
+                <p>
+                    คะแนนเต็ม 10 คะแนน
+                </p>
+
+            </div>
+
+
+            <div class="card" style="text-align:center;">
+
+                <div style="font-size:42px;">
+                    🏆
+                </div>
+
+                <h3>
+                    คะแนนหลังเรียน
+                </h3>
+
+                <div
+                    id="resultPostScore"
+                    style="font-size:2rem;font-weight:700;color:#00b894;">
+                    -
+                </div>
+
+                <p>
+                    คะแนนเต็ม 10 คะแนน
+                </p>
+
+            </div>
+
+
+            <div class="card" style="text-align:center;">
+
+                <div style="font-size:42px;">
+                    📈
+                </div>
+
+                <h3>
+                    พัฒนาการ
+                </h3>
+
+                <div
+                    id="resultDevelopment"
+                    style="font-size:2rem;font-weight:700;color:#fd79a8;">
+                    -
+                </div>
+
+                <p>
+                    คะแนนที่เพิ่มขึ้น
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- ร้อยละ -->
+
+        <div
+            class="card"
+            style="
+                margin-top:20px;
+                text-align:center;
+                background:linear-gradient(120deg,#f7f3ff,#effffc);
+            "
+        >
+
+            <h3>
+                📊 ผลการเรียนคิดเป็นร้อยละ
+            </h3>
+
+            <div
+                id="resultPercent"
+                style="
+                    font-size:3rem;
+                    font-weight:700;
+                    color:#4c35a8;
+                "
+            >
+                -
+            </div>
+
+            <p>
+                คำนวณจากคะแนนหลังเรียน
+            </p>
+
+        </div>
+
+
+        <!-- ความก้าวหน้ากิจกรรม -->
+
+        <div class="card" style="margin-top:20px;">
+
+            <h3>
+                🎮 ความก้าวหน้าการทำกิจกรรม
+            </h3>
+
+            <p id="resultActivities">
+                ทำแล้ว 0/4 บท
+            </p>
+
+            <div class="progress">
+
+                <span
+                    id="resultActivityBar"
+                    style="width:0%;"
+                ></span>
+
+            </div>
+
+        </div>
+
+
+        <!-- สถานะ -->
+
+        <div
+            id="resultStatus"
+            class="result"
+            style="text-align:center;margin-top:20px;"
+        >
+            กำลังตรวจสอบผลการเรียน...
+        </div>
+
+
+        <!-- วันที่ -->
+
+        <div
+            style="
+                text-align:center;
+                margin-top:20px;
+                color:#71809f;
+            "
+        >
+
+            <span>
+                🕒
+            </span>
+
+            <span id="resultDate">
+                -
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+<section id="posttest" class="page">
+ <div class="card"><h2>🏆 แบบทดสอบหลังเรียน 10 ข้อ</h2><p>ทบทวนบทเรียนทั้ง 4 บท แล้วเลือกคำตอบที่ถูกต้องที่สุด</p><div id="postQuiz"></div><button class="btn primary" onclick="submitQuiz('post')">
+    ส่งแบบทดสอบหลังเรียน
+</button>
+
+<button
+    class="btn primary"
+    onclick="go('results')"
+    style="margin-top:12px;"
+>
+    📊 ดูผลการเรียน
+</button><div id="postResult"></div></div>
+</section>
+</section>
+<!-- =====================================================
+     หน้าผลการเรียน
+====================================================== -->
+
+<section id="results" class="page">
+
+    <div class="card">
+
+        <div style="text-align:center; margin-bottom:25px;">
+
+            <div style="font-size:55px;">
+                🏆
+            </div>
+
+            <h2 style="margin:5px 0;">
+                สรุปผลการเรียน
+            </h2>
+
+            <p id="resultStudentName">
+                ผลการเรียนของผู้เรียน
+            </p>
+
+        </div>
+
+
+        <!-- ข้อมูลนักเรียน -->
+
+        <div class="grid">
+
+            <div class="card">
+                <h3>👤 นักเรียน</h3>
+                <p id="resultName">-</p>
+            </div>
+
+            <div class="card">
+                <h3>🏫 ชั้น</h3>
+                <p id="resultClass">-</p>
+            </div>
+
+            <div class="card">
+                <h3>🔢 เลขที่</h3>
+                <p id="resultNo">-</p>
+            </div>
+
+        </div>
+
+
+        <!-- คะแนน -->
+
+        <div class="grid">
+
+            <div class="card" style="text-align:center;">
+
+                <div style="font-size:42px;">
+                    📝
+                </div>
+
+                <h3>
+                    คะแนนก่อนเรียน
+                </h3>
+
+                <div
+                    id="resultPreScore"
+                    style="font-size:2rem;font-weight:700;color:#6c5ce7;">
+                    -
+                </div>
+
+                <p>
+                    คะแนนเต็ม 10 คะแนน
+                </p>
+
+            </div>
+
+
+            <div class="card" style="text-align:center;">
+
+                <div style="font-size:42px;">
+                    🏆
+                </div>
+
+                <h3>
+                    คะแนนหลังเรียน
+                </h3>
+
+                <div
+                    id="resultPostScore"
+                    style="font-size:2rem;font-weight:700;color:#00b894;">
+                    -
+                </div>
+
+                <p>
+                    คะแนนเต็ม 10 คะแนน
+                </p>
+
+            </div>
+
+
+            <div class="card" style="text-align:center;">
+
+                <div style="font-size:42px;">
+                    📈
+                </div>
+
+                <h3>
+                    พัฒนาการ
+                </h3>
+
+                <div
+                    id="resultDevelopment"
+                    style="font-size:2rem;font-weight:700;color:#fd79a8;">
+                    -
+                </div>
+
+                <p>
+                    คะแนนที่เพิ่มขึ้น
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- ร้อยละ -->
+
+        <div
+            class="card"
+            style="
+                margin-top:20px;
+                text-align:center;
+                background:linear-gradient(120deg,#f7f3ff,#effffc);
+            "
+        >
+
+            <h3>
+                📊 ผลการเรียนคิดเป็นร้อยละ
+            </h3>
+
+            <div
+                id="resultPercent"
+                style="
+                    font-size:3rem;
+                    font-weight:700;
+                    color:#4c35a8;
+                "
+            >
+                -
+            </div>
+
+            <p>
+                คำนวณจากคะแนนหลังเรียน
+            </p>
+
+        </div>
+
+
+        <!-- ความก้าวหน้ากิจกรรม -->
+
+        <div class="card" style="margin-top:20px;">
+
+            <h3>
+                🎮 ความก้าวหน้าการทำกิจกรรม
+            </h3>
+
+            <p id="resultActivities">
+                ทำแล้ว 0/4 บท
+            </p>
+
+            <div class="progress">
+
+                <span
+                    id="resultActivityBar"
+                    style="width:0%;"
+                ></span>
+
+            </div>
+
+        </div>
+
+
+        <!-- สถานะ -->
+
+        <div
+            id="resultStatus"
+            class="result"
+            style="text-align:center;margin-top:20px;"
+        >
+            กำลังตรวจสอบผลการเรียน...
+        </div>
+
+
+        <!-- วันที่ -->
+
+        <div
+            style="
+                text-align:center;
+                margin-top:20px;
+                color:#71809f;
+            "
+        >
+
+            <span>
+                🕒
+            </span>
+
+            <span id="resultDate">
+                -
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- =========================
+     หน้าผู้จัดทำ
+========================= -->
+
+<section id="creator" class="page">
+
+    <div class="creator-page">
+
+        <div class="creator-title">
+            <h1>👤 ผู้จัดทำ</h1>
+            <p>ผู้พัฒนาเว็บไซต์เพื่อการเรียนรู้</p>
+        </div>
+
+        <div class="creator-image-box">
+
+            <img
+                src="ผู้จัด.png"
+                alt="ผู้จัดทำ"
+                class="creator-image"
+            >
+
+        </div>
+
+    </div>
+
+</section>
+<section id="teacher" class="page">
+ <div class="card"><h2>👩‍🏫 ระบบสำหรับครูผู้สอน</h2><p>ดูประวัติการเข้าใช้ คะแนนก่อน/หลังเรียน และกิจกรรมของนักเรียนที่บันทึกไว้ในเบราว์เซอร์นี้</p>
+ <div class="grid">
+  <div class="card"><h3>👥 นักเรียน</h3><div id="studentCount">0</div></div>
+  <div class="card"><h3>📝 ทำก่อนเรียน</h3><div id="preCount">0</div></div>
+  <div class="card"><h3>🏆 ทำหลังเรียน</h3><div id="postCount">0</div></div>
+ </div>
+ <div style="margin:18px 0;display:flex;gap:8px;flex-wrap:wrap"><button class="btn primary" onclick="refreshTeacher()">🔄 รีเฟรชข้อมูล</button><button class="btn gray" onclick="exportCSV()">📥 ดาวน์โหลด CSV</button><button class="btn danger" onclick="clearAllData()">🗑️ ล้างข้อมูลทั้งหมด</button></div>
+ <div class="table-wrap"><table><thead><tr><th>ชื่อ-นามสกุล</th><th>ชั้น</th><th>เลขที่</th><th>เข้าใช้ล่าสุด</th><th>ก่อนเรียน</th><th>หลังเรียน</th><th>กิจกรรม</th></tr></thead><tbody id="teacherTable"></tbody></table></div>
+ </div>
+</section>
+</main>
+<footer>เรียนรู้ • ฝึกปฏิบัติ • ใช้เทคโนโลยีอย่างปลอดภัย</footer>
+
+<div class="modal" id="modal"><div class="modal-box"><button class="close" onclick="closeModal()">×</button><h2 id="modalTitle">แจ้งเตือน</h2><p id="modalText"></p><button class="btn primary" onclick="closeModal()">ตกลง</button></div></div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
